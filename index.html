@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🟥🟩🟦 Emoji Pixels</title>
+
+  <style>
+    html, body {
+      margin: 0;
+    }
+
+    body  {
+      background: #111;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #tv {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: calc(20px * 32);
+      transition: transform 1s ease-in-out;
+      transform: scale(calc(4 * (32 / (20 * 32))));
+    }
+
+    #tv:before {
+      top: 90px;
+      left: 400px;
+      display: block;
+      content: '📺';
+      position: fixed;
+      transform: scale(70, 90);
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    #tv:hover {
+      transform: scale(1);
+    }
+
+    #tv > div {
+      display: flex;
+      width: 20px;
+      height: 20px;
+    }
+
+    #tv > div > span {
+      flex: 1 0 0;
+      transform: scaleX(0.33);
+      width: 33.33%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <img src="./images/apple.jpg" alt="">
+  <div id="tv"></div>
+  <script src="src/main.ts"></script>
+</body>
+</html>
