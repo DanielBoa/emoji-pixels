@@ -1,7 +1,9 @@
 const [red, green, blue] = ['&#x1F7E5;', '&#x1F7E9;', '&#x1F7E6;'];
 const [width, height] = [32, 32];
 const numberOfPixels = width * height;
+const body = document.body;
 const tv = document.getElementById('tv');
+const scrollSections = [...document.querySelectorAll('.scroll-section')];
 
 function createPixel() {
   const pixelEl = document.createElement('div');
@@ -45,3 +47,16 @@ for (let i = 0; i < pixels.length; i++) {
   greenEl.style.opacity = `${green / 255}`;
   blueEl.style.opacity = `${blue / 255}`;
 }
+
+let currentSection = 0;
+document.addEventListener('scroll', (e) => {
+  const { scrollTop, scrollHeight } = document.documentElement;
+  const numberOfSections = scrollSections.length;
+  const heightOfSection = (scrollHeight / numberOfSections);
+  const newSection = Math.floor(scrollTop / heightOfSection);
+
+  if (currentSection !== newSection) {
+    currentSection = newSection;
+    body.dataset.currentSection = '' + currentSection;
+  }
+})
